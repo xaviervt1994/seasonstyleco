@@ -103,6 +103,14 @@
         <div id="products-grid" class="products-grid">
           <!-- Populated by script.js -->
         </div>
+
+        <!-- SEO text block that JS fills based on season -->
+        <section class="season-seo">
+          <h4>Season Style Co – Seasonal Clothing & Gadget Drops</h4>
+          <div id="season-seo-text" class="season-seo-text">
+            <!-- JS will insert season-specific SEO copy here -->
+          </div>
+        </section>
       </section>
 
       <!-- Trust / Info Section -->
@@ -169,9 +177,17 @@
       <p>
         &copy; <span id="year"></span> Season Style Co. All rights reserved.
       </p>
+      <p class="footer-links">
+        <a href="about.html">About</a> ·
+        <a href="shipping-returns.html">Shipping &amp; Returns</a>
+      </p>
     </footer>
 
     <!-- Main script -->
+    <!-- If script.js is inside a /js folder, use this path: -->
+    <script src="js/script.js"></script>
+    <!-- If your script.js is in the same folder as index.html, change it back to:
     <script src="script.js"></script>
+    -->
   </body>
 </html>

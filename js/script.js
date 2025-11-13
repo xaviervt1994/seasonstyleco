@@ -464,10 +464,24 @@ cartOverlay.addEventListener("click", closeCart);
 checkoutButton.addEventListener("click", handleCheckout);
 
 // Footer year
+// Footer year
 if (yearSpan) {
   yearSpan.textContent = new Date().getFullYear();
 }
 
 // ========= INIT =========
-updateSeasonContent(activeSeason);
+
+// Only run seasonal hero / product setup on pages that actually have that layout
+const hasSeasonLayout =
+  productsGrid &&
+  seasonHeading &&
+  seasonSubheading &&
+  productSectionTitle &&
+  countdownEl;
+
+if (hasSeasonLayout) {
+  updateSeasonContent(activeSeason);
+}
+
+// Cart sidebar can exist on every page
 renderCart();
