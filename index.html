@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Season Style Co | Limited-Time Seasonal Clothing & Gadgets</title>
+
+    <meta
+      name="description"
+      content="Season Style Co offers limited-time seasonal clothing and gadget drops. Shop exclusive winter deals on cozy clothes, holiday gadgets, and gifts before they disappear."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Favicon (optional: replace with your own) -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="logo-area">
+        <!-- Replace src with your actual logo file -->
+        <img
+          src="assets/logo.jpeg"
+          alt="Season Style Co logo"
+          class="logo-img"
+        />
+        <div class="logo-text">
+          <h1>SEASON STYLE CO</h1>
+          <p>Express Yourself, Season by Season</p>
+        </div>
+      </div>
+
+      <nav class="main-nav" aria-label="Season selection">
+        <button
+          class="nav-link season-tab active"
+          data-season="winter"
+          type="button"
+        >
+          Winter
+        </button>
+        <button class="nav-link season-tab" data-season="spring" type="button">
+          Spring
+        </button>
+        <button class="nav-link season-tab" data-season="summer" type="button">
+          Summer
+        </button>
+        <button class="nav-link season-tab" data-season="fall" type="button">
+          Fall
+        </button>
+      </nav>
+
+      <div class="cart-button-wrapper">
+        <button id="cart-button" type="button" aria-label="Open shopping cart">
+          Cart <span id="cart-count">0</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <!-- Hero / Promo Section -->
+      <section class="hero">
+        <div class="hero-content">
+          <h2 id="season-heading">Winter Drops &amp; Holiday Deals</h2>
+          <p id="season-subheading">
+            Limited-time winter-only styles, cozy fits, and holiday-ready
+            gadgets. When the season changes, these deals disappear.
+          </p>
+
+          <div class="hero-badges">
+            <span class="badge">Holiday Sale</span>
+            <span class="badge badge-secondary">Limited-Time Drops</span>
+            <span class="badge badge-accent">Free Shipping Over $50*</span>
+          </div>
+
+          <div class="countdown-wrapper">
+            <p>Winter deals end in:</p>
+            <div id="countdown" class="countdown">Loading...</div>
+          </div>
+
+          <div class="hero-actions">
+            <a href="#products-section" class="primary-cta">
+              Shop Winter Deals
+            </a>
+            <p class="hero-small-note">
+              New collections drop every season. Once it’s gone, it’s gone.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Product Grid -->
+      <section
+        class="products-section"
+        aria-labelledby="product-section-title"
+        id="products-section"
+      >
+        <h3 id="product-section-title">Winter Featured Products</h3>
+        <p class="products-intro">
+          Hand-picked winter clothing and gadgets, curated just for this
+          season’s drop.
+        </p>
+        <div id="products-grid" class="products-grid">
+          <!-- Populated by script.js -->
+        </div>
+      </section>
+
+      <!-- Trust / Info Section -->
+      <section class="info-grid" aria-label="Store information">
+        <div class="info-card">
+          <h4>Seasonal Exclusives</h4>
+          <p>
+            Each season has its own collection. When winter ends, these products
+            go away and spring styles arrive. No endless scrolling, just
+            limited-time drops.
+          </p>
+        </div>
+        <div class="info-card">
+          <h4>Secure Checkout</h4>
+          <p>
+            We use trusted payment providers so your info stays safe. Your cart
+            updates in real time before checkout.
+          </p>
+        </div>
+        <div class="info-card">
+          <h4>Fast Shipping Partners</h4>
+          <p>
+            We work with vetted suppliers so your seasonal picks ship as quickly
+            as possible. You track your order every step of the way.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Cart Sidebar -->
+    <aside
+      id="cart-sidebar"
+      class="cart-sidebar"
+      aria-label="Shopping cart"
+      aria-hidden="true"
+    >
+      <div class="cart-header">
+        <h3>Your Cart</h3>
+        <button id="close-cart" type="button" aria-label="Close cart sidebar">
+          &times;
+        </button>
+      </div>
+      <div id="cart-items" class="cart-items">
+        <!-- Filled by JS -->
+      </div>
+      <div class="cart-footer">
+        <div class="cart-total-row">
+          <span>Total:</span>
+          <span id="cart-total">$0.00</span>
+        </div>
+        <button id="checkout-button" class="checkout-button" type="button">
+          Checkout
+        </button>
+        <p class="cart-note">
+          *This is a demo front-end. Connect this button to Stripe, PayPal, or
+          your backend / dropshipping platform to start accepting real orders.
+        </p>
+      </div>
+    </aside>
+
+    <div id="cart-overlay" class="cart-overlay" aria-hidden="true"></div>
+
+    <footer class="site-footer">
+      <p>
+        &copy; <span id="year"></span> Season Style Co. All rights reserved.
+      </p>
+    </footer>
+
+    <!-- Main script -->
+    <script src="script.js"></script>
+  </body>
+</html>
