@@ -1,487 +1,651 @@
-// ========= PRODUCT DATA (EDIT THESE FOR REAL ITEMS) =========
+"use strict";
 
-const productsBySeason = {
-  winter: [
-    {
-      id: "w1",
-      name: "Thermal Fleece-Lined Hoodie",
-      description:
-        "Heavyweight fleece hoodie with soft lining. Perfect for cold morning commutes.",
-      price: 49.99,
-      oldPrice: 69.99,
-      tag: "Winter Essential",
-      limited: true,
-      image:
-        "https://images.pexels.com/photos/7671166/pexels-photo-7671166.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
-    {
-      id: "w2",
-      name: "Touchscreen Winter Gloves",
-      description:
-        "Stay warm and still use your phone with conductive fingertips.",
-      price: 24.99,
-      oldPrice: 34.99,
-      tag: "Gadget Pick",
-      limited: false,
-      image:
-        "https://images.pexels.com/photos/4048598/pexels-photo-4048598.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
-    {
-      id: "w3",
-      name: "USB Heated Coffee Mug Warmer",
-      description: "Keeps your coffee or tea warm at your desk all winter.",
-      price: 19.99,
-      oldPrice: 29.99,
-      tag: "Desk Gadget",
-      limited: true,
-      image:
-        "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
-    {
-      id: "w4",
-      name: "Sherpa-Lined Beanie",
-      description: "Cozy beanie with soft sherpa lining for extra warmth.",
-      price: 17.99,
-      oldPrice: 24.99,
-      tag: "Cozy Pick",
-      limited: false,
-      image:
-        "https://images.pexels.com/photos/19784561/pexels-photo-19784561/free-photo-of-woman-in-winter-clothes-on-street.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
-    {
-      id: "w5",
-      name: "LED Snowflake String Lights",
-      description: "Add winter vibes to your room or gaming setup.",
-      price: 21.99,
-      oldPrice: 32.99,
-      tag: "Holiday Vibes",
-      limited: true,
-      image:
-        "https://images.pexels.com/photos/3815759/pexels-photo-3815759.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
-    {
-      id: "w6",
-      name: "Flannel Pajama Set",
-      description:
-        "Ultra-soft flannel PJ set for Netflix-and-chill winter nights.",
-      price: 39.99,
-      oldPrice: 54.99,
-      tag: "Lounge Wear",
-      limited: false,
-      image:
-        "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
-  ],
-  spring: [
-    {
-      id: "s1",
-      name: "Lightweight Windbreaker",
-      description: "Packable jacket for rainy spring days.",
-      price: 44.99,
-      oldPrice: 59.99,
-      tag: "Spring Layer",
-      limited: false,
-      image:
-        "https://images.pexels.com/photos/6311657/pexels-photo-6311657.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
-  ],
-  summer: [
-    {
-      id: "su1",
-      name: "UV Protection Bucket Hat",
-      description: "Stay shaded and cool all summer.",
-      price: 24.99,
-      oldPrice: 34.99,
-      tag: "Summer Drop",
-      limited: false,
-      image:
-        "https://images.pexels.com/photos/15389741/pexels-photo-15389741/free-photo-of-woman-wearing-a-bucket-hat.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
-  ],
-  fall: [
-    {
-      id: "f1",
-      name: "Oversized Flannel Shirt",
-      description: "Perfect layering piece for fall weather.",
-      price: 39.99,
-      oldPrice: 54.99,
-      tag: "Fall Favorite",
-      limited: false,
-      image:
-        "https://images.pexels.com/photos/6311579/pexels-photo-6311579.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
-  ],
-};
+/* ==============================
+   CONFIG: SEASONS & PRODUCTS
+   ============================== */
 
-// ========= SEASON TEXT / COUNTDOWN CONFIG =========
-
-const seasonConfig = {
+const SEASON_CONFIG = {
   winter: {
-    heading: "Winter Drops & Holiday Deals",
-    subheading:
-      "Limited-time winter-only styles, cozy fits, and giftable gadgets. When the season changes, these deals disappear.",
-    productTitle: "Winter Featured Products",
-    // Set this to whenever you want “winter” to end
-    endDate: "2026-01-10T23:59:59",
-    seoText: `
-      Shop limited-time winter clothing, cozy loungewear, and holiday gadgets at Season Style Co.
-      Every drop is curated for cold weather, gift-giving, and staying warm without losing your style.
-      These winter items disappear when the season ends—no restocks until next year.
+    label: "Winter",
+    heroHeading: "Winter Drops & Holiday Deals",
+    heroSubheading:
+      "Limited-time winter-only styles, cozy fits, and holiday-ready gadgets. When the season changes, these deals disappear.",
+    sectionTitle: "Winter Featured Products",
+    productsIntro:
+      "Hand-picked winter clothing and gadgets, curated just for this season’s drop.",
+    seoHtml: `
+      <p>
+        Season Style Co drops limited-time winter collections with cozy hoodies, thermal sets,
+        and holiday gadgets built for cold weather. Once this drop ends, these exact bundles
+        won’t return—so if you see something you like, grab it before the timer hits zero.
+      </p>
+      <p>
+        From comfy streetwear to giftable tech, our winter picks are curated to help you stay warm,
+        look good, and get more out of the season.
+      </p>
     `,
+    // Set this to whatever date your winter drop ends
+    countdownEnd: new Date("2025-01-10T23:59:59"),
   },
   spring: {
-    heading: "Fresh Spring Fits & Everyday Gear",
-    subheading:
-      "Lightweight layers and everyday gadgets for spring. Swap heavy winter gear for fresh, easygoing fits.",
-    productTitle: "Spring Featured Products",
-    endDate: "2026-04-01T23:59:59",
-    seoText: `
-      Explore spring-ready outfits, windbreakers, and fresh accessories. Perfect for layering, travel,
-      and that in-between weather. New drops land as the seasons change.
+    label: "Spring",
+    heroHeading: "Fresh Fits & Spring Reset",
+    heroSubheading:
+      "Lightweight layers, fresh colors, and simple gadgets for resetting your space and style this spring.",
+    sectionTitle: "Spring Featured Products",
+    productsIntro:
+      "Refresh your closet and your setup with curated spring-only drops.",
+    seoHtml: `
+      <p>
+        Spring at Season Style Co is all about clean colors, light layers, and easy upgrades.
+        We focus on limited-time runs so your fits stay unique, not over-saturated.
+      </p>
+      <p>
+        These products are here only for the spring drop—once the season flips, they rotate out.
+      </p>
     `,
+    countdownEnd: null, // no timer for now (we’ll show a message)
   },
   summer: {
-    heading: "Summer Heat Drops & Travel Essentials",
-    subheading:
-      "Breathable, travel-ready styles and gadgets built for hot days, festivals, and late-night hangs.",
-    productTitle: "Summer Featured Products",
-    endDate: "2026-08-31T23:59:59",
-    seoText: `
-      Find summer essentials like UV-protective hats, lightweight tops, and travel gadgets.
-      Gear up for vacations, festivals, and long days in the sun.
+    label: "Summer",
+    heroHeading: "Heatwave Essentials & Travel Gear",
+    heroSubheading:
+      "Stay cool and ready for anything with seasonal tees, shorts, and travel-friendly tech.",
+    sectionTitle: "Summer Featured Products",
+    productsIntro:
+      "Summer-only drops designed for hot days, late nights, and trips.",
+    seoHtml: `
+      <p>
+        Our summer collections are built for long days, late nights, and trips that actually happen.
+        Think breathable fabrics, bold graphics, and useful gadgets.
+      </p>
+      <p>
+        When summer ends, this drop closes and a completely new lineup rotates in.
+      </p>
     `,
+    countdownEnd: null,
   },
   fall: {
-    heading: "Fall Layers & Cozy Tech",
-    subheading:
-      "Flannels, warm layers, and gadgets that match hoodie weather and early sunsets.",
-    productTitle: "Fall Featured Products",
-    endDate: "2026-11-30T23:59:59",
-    seoText: `
-      Shop fall flannels, transitional layers, and cozy desk gadgets.
-      Perfect for back-to-school, work, or lazy weekends at home.
+    label: "Fall",
+    heroHeading: "Cozy Layers & Autumn Essentials",
+    heroSubheading:
+      "Transition pieces, warm tones, and everyday gadgets built for the chill.",
+    sectionTitle: "Fall Featured Products",
+    productsIntro:
+      "Layer up with limited-time fall essentials and cozy pieces.",
+    seoHtml: `
+      <p>
+        Fall drops at Season Style Co focus on layering pieces, warm neutrals, and everyday gadgets
+        that fit the season—without feeling generic.
+      </p>
+      <p>
+        Once this fall drop ends, these exact combos don’t come back.
+      </p>
     `,
+    countdownEnd: null,
   },
 };
 
-// ========= DOM ELEMENTS =========
+// Simple product catalog – edit these, swap images, change prices, etc.
+const PRODUCTS = [
+  /* WINTER */
+  {
+    id: "winter-cozy-hoodie",
+    season: "winter",
+    name: "Cozy Fleece Hoodie",
+    description:
+      "Thick, ultra-soft fleece with a relaxed fit. Perfect for cold mornings.",
+    price: 49.99,
+    oldPrice: 69.99,
+    badge: "Bestseller",
+    limited: true,
+    image: "assets/winter-hoodie.jpg",
+  },
+  {
+    id: "winter-beanie-set",
+    season: "winter",
+    name: "Thermal Beanie & Gloves Set",
+    description: "Matching knit set to keep your ears and hands warm.",
+    price: 24.99,
+    oldPrice: 34.99,
+    badge: "Bundle Deal",
+    limited: false,
+    image: "assets/winter-beanie.jpg",
+  },
+  {
+    id: "winter-led-lights",
+    season: "winter",
+    name: "Warm LED Room Lights",
+    description: "Soft ambient LEDs to give your room a cozy holiday glow.",
+    price: 19.99,
+    oldPrice: 29.99,
+    badge: "Holiday Vibes",
+    limited: false,
+    image: "assets/winter-lights.jpg",
+  },
+  {
+    id: "winter-mug-warmer",
+    season: "winter",
+    name: "USB Mug Warmer",
+    description:
+      "Keeps your coffee, tea, or cocoa warm while you work or game.",
+    price: 17.99,
+    oldPrice: 24.99,
+    badge: "Gift Favorite",
+    limited: true,
+    image: "assets/winter-mug-warmer.jpg",
+  },
 
-const productsGrid = document.getElementById("products-grid");
-const seasonHeading = document.getElementById("season-heading");
-const seasonSubheading = document.getElementById("season-subheading");
-const productSectionTitle = document.getElementById("product-section-title");
-const countdownEl = document.getElementById("countdown");
-const seasonTabs = document.querySelectorAll(".season-tab");
+  /* SPRING */
+  {
+    id: "spring-crewneck",
+    season: "spring",
+    name: "Pastel Oversized Crewneck",
+    description: "Lightweight fleece with soft spring colorways.",
+    price: 39.99,
+    oldPrice: 54.99,
+    badge: "New Drop",
+    limited: true,
+    image: "assets/spring-crewneck.jpg",
+  },
+  {
+    id: "spring-desk-plant",
+    season: "spring",
+    name: "Minimal Desk Plant (Artificial)",
+    description: "Zero-maintenance greenery to refresh your workspace.",
+    price: 14.99,
+    oldPrice: 19.99,
+    badge: "Easy Upgrade",
+    limited: false,
+    image: "assets/spring-plant.jpg",
+  },
 
-const cartButton = document.getElementById("cart-button");
-const cartSidebar = document.getElementById("cart-sidebar");
-const cartOverlay = document.getElementById("cart-overlay");
-const closeCartButton = document.getElementById("close-cart");
-const cartItemsContainer = document.getElementById("cart-items");
-const cartTotalEl = document.getElementById("cart-total");
-const cartCountEl = document.getElementById("cart-count");
-const checkoutButton = document.getElementById("checkout-button");
-const yearSpan = document.getElementById("year");
+  /* SUMMER */
+  {
+    id: "summer-graphic-tee",
+    season: "summer",
+    name: "Oversized Graphic Tee",
+    description: "Breathable cotton with limited-run artwork.",
+    price: 29.99,
+    oldPrice: 39.99,
+    badge: "Drop Exclusive",
+    limited: true,
+    image: "assets/summer-tee.jpg",
+  },
+  {
+    id: "summer-portable-fan",
+    season: "summer",
+    name: "Rechargeable Portable Fan",
+    description: "Pocket-sized cooling with USB-C charging.",
+    price: 21.99,
+    oldPrice: 27.99,
+    badge: "Stay Cool",
+    limited: false,
+    image: "assets/summer-fan.jpg",
+  },
 
-// Optional SEO block (add this div in your HTML if you want JS to fill it)
-const seasonSeoBlock = document.getElementById("season-seo-text");
+  /* FALL */
+  {
+    id: "fall-flannel",
+    season: "fall",
+    name: "Soft Plaid Flannel",
+    description: "Relaxed-fit flannel that layers over any tee.",
+    price: 44.99,
+    oldPrice: 59.99,
+    badge: "Fall Staple",
+    limited: true,
+    image: "assets/fall-flannel.jpg",
+  },
+  {
+    id: "fall-candle-set",
+    season: "fall",
+    name: "Cozy Scent Candle Set",
+    description: "Three-pack candles with warm autumn scents.",
+    price: 26.99,
+    oldPrice: 34.99,
+    badge: "Cozy Pack",
+    limited: false,
+    image: "assets/fall-candles.jpg",
+  },
+];
 
-let activeSeason = "winter";
+// Quick lookup by id
+const PRODUCT_INDEX = PRODUCTS.reduce((map, p) => {
+  map[p.id] = p;
+  return map;
+}, {});
+
+/* ==============================
+   STATE
+   ============================== */
+
+let currentSeason = "winter";
+let cart = [];
 let countdownInterval = null;
 
-const cart = [];
+/* ==============================
+   DOM ELEMENTS
+   ============================== */
 
-// ========= RENDERING =========
+const seasonTabs = document.querySelectorAll(".season-tab");
+const heroHeadingEl = document.getElementById("season-heading");
+const heroSubheadingEl = document.getElementById("season-subheading");
+const productsSectionTitleEl = document.getElementById("product-section-title");
+const productsIntroEl = document.querySelector(".products-intro");
+const productsGridEl = document.getElementById("products-grid");
+const seasonSeoTextEl = document.getElementById("season-seo-text");
+
+const cartButtonEl = document.getElementById("cart-button");
+const cartCountEl = document.getElementById("cart-count");
+const cartSidebarEl = document.getElementById("cart-sidebar");
+const cartOverlayEl = document.getElementById("cart-overlay");
+const closeCartButtonEl = document.getElementById("close-cart");
+const cartItemsEl = document.getElementById("cart-items");
+const cartTotalEl = document.getElementById("cart-total");
+const checkoutButtonEl = document.getElementById("checkout-button");
+
+const yearEl = document.getElementById("year");
+const countdownEl = document.getElementById("countdown");
+
+/* ==============================
+   HELPERS
+   ============================== */
 
 function formatMoney(amount) {
   return `$${amount.toFixed(2)}`;
 }
 
-function renderProductsForSeason(season) {
-  const products = productsBySeason[season] || [];
-  productsGrid.innerHTML = "";
-
-  products.forEach((product) => {
-    const card = document.createElement("article");
-    card.className = "product-card";
-
-    card.innerHTML = `
-      <div class="product-img-wrapper">
-        <img src="${product.image}" alt="${product.name}" loading="lazy" />
-      </div>
-      <div class="product-badge-row">
-        <span>${product.tag}</span>
-        <span class="limited">${product.limited ? "Limited" : "Seasonal"}</span>
-      </div>
-      <div class="product-info">
-        <h4 class="product-title">${product.name}</h4>
-        <p class="product-desc">${product.description}</p>
-      </div>
-      <div class="product-footer">
-        <div class="product-price">
-          <span class="product-price-main">${formatMoney(product.price)}</span>
-          <span class="product-price-old">${formatMoney(
-            product.oldPrice
-          )}</span>
-        </div>
-        <button class="product-add-btn" data-id="${product.id}">
-          Add to Cart
-        </button>
-      </div>
-    `;
-
-    productsGrid.appendChild(card);
-  });
+function getProductsForSeason(season) {
+  return PRODUCTS.filter((p) => p.season === season);
 }
 
-function updateSeasonContent(season) {
-  const config = seasonConfig[season];
+/* ==============================
+   SEASON RENDERING
+   ============================== */
+
+function renderSeason(season) {
+  currentSeason = season;
+  const config = SEASON_CONFIG[season];
+
   if (!config) return;
 
-  seasonHeading.textContent = config.heading;
-  seasonSubheading.textContent = config.subheading;
-  productSectionTitle.textContent = config.productTitle;
-
-  if (seasonSeoBlock) {
-    seasonSeoBlock.textContent = ""; // clear
-    seasonSeoBlock.innerText = config.seoText.trim();
+  // Update text content
+  heroHeadingEl.textContent = config.heroHeading;
+  heroSubheadingEl.textContent = config.heroSubheading;
+  productsSectionTitleEl.textContent = config.sectionTitle;
+  if (productsIntroEl) {
+    productsIntroEl.textContent = config.productsIntro;
+  }
+  if (seasonSeoTextEl) {
+    seasonSeoTextEl.innerHTML = config.seoHtml;
   }
 
-  // Update active tab styling
-  seasonTabs.forEach((btn) => {
-    btn.classList.toggle("active", btn.dataset.season === season);
+  // Update active tab
+  seasonTabs.forEach((tab) => {
+    tab.classList.toggle("active", tab.dataset.season === season);
   });
 
-  // Reset and start countdown
-  if (countdownInterval) clearInterval(countdownInterval);
-  startCountdown(config.endDate);
+  // Render products for this season
+  renderProducts(getProductsForSeason(season));
 
-  // Render products
-  renderProductsForSeason(season);
+  // Update countdown
+  startCountdownForSeason(config);
 }
 
-// ========= COUNTDOWN =========
+function renderProducts(products) {
+  if (!productsGridEl) return;
 
-function startCountdown(endDateString) {
-  const endDate = new Date(endDateString).getTime();
+  if (!products.length) {
+    productsGridEl.innerHTML =
+      "<p>No products for this season yet. New drops are coming soon.</p>";
+    return;
+  }
 
-  function tick() {
-    const now = Date.now();
-    const diff = endDate - now;
+  const cardsHtml = products
+    .map((product) => {
+      const { id, name, description, price, oldPrice, badge, limited, image } =
+        product;
+
+      return `
+      <article class="product-card">
+        <div class="product-img-wrapper">
+          <img src="${image}" alt="${name}" loading="lazy" />
+        </div>
+
+        <div class="product-badge-row">
+          <span>${badge || "Season Drop"}</span>
+          ${
+            limited
+              ? '<span class="limited">Limited Run</span>'
+              : "<span>In Season</span>"
+          }
+        </div>
+
+        <div class="product-info">
+          <h4 class="product-title">${name}</h4>
+          <p class="product-desc">${description}</p>
+        </div>
+
+        <div class="product-footer">
+          <div class="product-price">
+            <span class="product-price-main">${formatMoney(price)}</span>
+            ${
+              oldPrice
+                ? `<span class="product-price-old">${formatMoney(
+                    oldPrice
+                  )}</span>`
+                : ""
+            }
+          </div>
+          <button
+            type="button"
+            class="product-add-btn"
+            data-product-id="${id}"
+          >
+            Add to Cart
+          </button>
+        </div>
+      </article>
+    `;
+    })
+    .join("");
+
+  productsGridEl.innerHTML = cardsHtml;
+}
+
+/* ==============================
+   COUNTDOWN
+   ============================== */
+
+function startCountdownForSeason(config) {
+  if (!countdownEl) return;
+
+  // Clear any existing interval
+  if (countdownInterval) {
+    clearInterval(countdownInterval);
+    countdownInterval = null;
+  }
+
+  if (!config.countdownEnd) {
+    countdownEl.textContent = "New drops go live throughout the season.";
+    return;
+  }
+
+  function updateCountdown() {
+    const now = new Date();
+    const diff = config.countdownEnd - now;
 
     if (diff <= 0) {
-      countdownEl.textContent = "Season ended – new drop coming soon.";
       clearInterval(countdownInterval);
+      countdownEl.textContent = "This drop just ended. New styles coming soon.";
       return;
     }
 
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const totalSeconds = Math.floor(diff / 1000);
+    const days = Math.floor(totalSeconds / (60 * 60 * 24));
+    const hours = Math.floor((totalSeconds % (60 * 60 * 24)) / (60 * 60));
+    const minutes = Math.floor((totalSeconds % (60 * 60)) / 60);
+    const seconds = totalSeconds % 60;
 
     countdownEl.innerHTML = `
-      <span>${days}d</span>
-      <span>${hours}h</span>
-      <span>${minutes}m</span>
+      <span>${String(days).padStart(2, "0")}d</span>
+      <span>${String(hours).padStart(2, "0")}h</span>
+      <span>${String(minutes).padStart(2, "0")}m</span>
+      <span>${String(seconds).padStart(2, "0")}s</span>
     `;
   }
 
-  tick();
-  countdownInterval = setInterval(tick, 60000); // update every minute
+  updateCountdown();
+  countdownInterval = setInterval(updateCountdown, 1000);
 }
 
-// ========= CART LOGIC =========
+/* ==============================
+   CART LOGIC
+   ============================== */
 
-function findCartItem(id) {
-  return cart.find((item) => item.id === id);
+function openCart() {
+  cartSidebarEl.classList.add("open");
+  cartOverlayEl.classList.add("open");
+  cartSidebarEl.setAttribute("aria-hidden", "false");
+  cartOverlayEl.setAttribute("aria-hidden", "false");
+}
+
+function closeCart() {
+  cartSidebarEl.classList.remove("open");
+  cartOverlayEl.classList.remove("open");
+  cartSidebarEl.setAttribute("aria-hidden", "true");
+  cartOverlayEl.setAttribute("aria-hidden", "true");
 }
 
 function addToCart(productId) {
-  const product = Object.values(productsBySeason)
-    .flat()
-    .find((p) => p.id === productId);
-
+  const product = PRODUCT_INDEX[productId];
   if (!product) return;
 
-  const existing = findCartItem(productId);
+  const existing = cart.find((item) => item.id === productId);
   if (existing) {
-    existing.qty += 1;
+    existing.quantity += 1;
   } else {
     cart.push({
       id: product.id,
       name: product.name,
       price: product.price,
       image: product.image,
-      qty: 1,
+      quantity: 1,
     });
   }
 
-  renderCart();
+  updateCartUI();
   openCart();
 }
 
-function updateCartQty(productId, delta) {
-  const item = findCartItem(productId);
+function changeCartQuantity(productId, delta) {
+  const item = cart.find((i) => i.id === productId);
   if (!item) return;
 
-  item.qty += delta;
-  if (item.qty <= 0) {
-    const index = cart.findIndex((c) => c.id === productId);
-    if (index !== -1) cart.splice(index, 1);
+  item.quantity += delta;
+  if (item.quantity <= 0) {
+    cart = cart.filter((i) => i.id !== productId);
   }
-  renderCart();
+
+  updateCartUI();
 }
 
-function removeCartItem(productId) {
-  const index = cart.findIndex((c) => c.id === productId);
-  if (index !== -1) {
-    cart.splice(index, 1);
-    renderCart();
-  }
+function removeFromCart(productId) {
+  cart = cart.filter((i) => i.id !== productId);
+  updateCartUI();
 }
 
-function renderCart() {
-  cartItemsContainer.innerHTML = "";
-  let total = 0;
-  let count = 0;
+function updateCartUI() {
+  // Count + total
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const totalPrice = cart.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
 
-  cart.forEach((item) => {
-    total += item.price * item.qty;
-    count += item.qty;
+  cartCountEl.textContent = totalItems;
+  cartTotalEl.textContent = formatMoney(totalPrice);
 
-    const row = document.createElement("div");
-    row.className = "cart-item";
-    row.dataset.id = item.id;
+  // Render list
+  if (!cart.length) {
+    cartItemsEl.innerHTML =
+      "<p>Your cart is empty. Start by adding a seasonal pick.</p>";
+    return;
+  }
 
-    row.innerHTML = `
-      <div class="cart-item-img">
-        <img src="${item.image}" alt="${item.name}" />
-      </div>
-      <div class="cart-item-info">
-        <p class="cart-item-title">${item.name}</p>
-        <div class="cart-item-meta">${formatMoney(item.price)} x ${
-      item.qty
-    }</div>
-        <div class="cart-item-actions">
-          <button class="qty-button" data-action="decrease">-</button>
-          <span>${item.qty}</span>
-          <button class="qty-button" data-action="increase">+</button>
-          <button class="qty-button" data-action="remove">x</button>
+  const itemsHtml = cart
+    .map((item) => {
+      return `
+      <div class="cart-item">
+        <div class="cart-item-img">
+          <img src="${item.image}" alt="${item.name}" />
+        </div>
+        <div class="cart-item-info">
+          <p class="cart-item-title">${item.name}</p>
+          <p class="cart-item-meta">
+            ${item.quantity} × ${formatMoney(item.price)}
+          </p>
+          <div class="cart-item-actions">
+            <button
+              type="button"
+              class="qty-button"
+              data-action="decrease"
+              data-product-id="${item.id}"
+            >−</button>
+            <span>${item.quantity}</span>
+            <button
+              type="button"
+              class="qty-button"
+              data-action="increase"
+              data-product-id="${item.id}"
+            >+</button>
+            <button
+              type="button"
+              class="qty-button"
+              data-action="remove"
+              data-product-id="${item.id}"
+            >&times;</button>
+          </div>
         </div>
       </div>
     `;
+    })
+    .join("");
 
-    cartItemsContainer.appendChild(row);
-  });
-
-  cartTotalEl.textContent = formatMoney(total);
-  cartCountEl.textContent = count.toString();
+  cartItemsEl.innerHTML = itemsHtml;
 }
 
-// ========= CART OPEN/CLOSE =========
-
-function openCart() {
-  cartSidebar.classList.add("open");
-  cartOverlay.classList.add("open");
-}
-
-function closeCart() {
-  cartSidebar.classList.remove("open");
-  cartOverlay.classList.remove("open");
-}
-
-// ========= CHECKOUT INTEGRATION =========
-
-// TODO: replace with your deployed Netlify/Vercel function URL
-const CHECKOUT_ENDPOINT =
-  "https://YOUR-SITE.netlify.app/.netlify/functions/create-checkout-session";
+/* ==============================
+   CHECKOUT (NETLIFY FUNCTION)
+   ============================== */
 
 async function handleCheckout() {
-  if (cart.length === 0) {
+  if (!cart.length) {
     alert("Your cart is empty.");
     return;
   }
 
+  checkoutButtonEl.disabled = true;
+  const originalText = checkoutButtonEl.textContent;
+  checkoutButtonEl.textContent = "Redirecting...";
+
   try {
-    const response = await fetch(CHECKOUT_ENDPOINT, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ items: cart }),
-    });
+    const response = await fetch(
+      "/.netlify/functions/create-checkout-session",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          items: cart.map((item) => ({
+            id: item.id,
+            quantity: item.quantity,
+          })),
+        }),
+      }
+    );
 
     if (!response.ok) {
-      console.error("Checkout error:", await response.text());
-      alert("There was a problem starting checkout. Please try again.");
-      return;
+      throw new Error("Checkout endpoint error");
     }
 
     const data = await response.json();
 
-    if (data.url) {
+    if (data && data.url) {
       window.location.href = data.url; // Stripe Checkout URL
     } else {
-      alert("Checkout session did not return a URL.");
+      throw new Error("No checkout URL returned");
     }
-  } catch (err) {
-    console.error(err);
-    alert("Network error starting checkout.");
+  } catch (error) {
+    console.error(error);
+    alert(
+      "Checkout isn’t fully connected yet. Once your Stripe/PayPal backend is live, this button will send customers to the payment page."
+    );
+  } finally {
+    checkoutButtonEl.disabled = false;
+    checkoutButtonEl.textContent = originalText;
   }
 }
 
-// ========= EVENT LISTENERS =========
+/* ==============================
+   EVENT BINDINGS & INIT
+   ============================== */
 
-document.addEventListener("click", (e) => {
-  const addBtn = e.target.closest(".product-add-btn");
-  if (addBtn) {
-    const id = addBtn.dataset.id;
-    addToCart(id);
+document.addEventListener("DOMContentLoaded", () => {
+  // Year in footer
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
   }
 
-  const cartActionBtn = e.target.closest(".qty-button");
-  if (cartActionBtn) {
-    const action = cartActionBtn.dataset.action;
-    const cartItemRow = cartActionBtn.closest(".cart-item");
-    if (!cartItemRow) return;
-    const id = cartItemRow.dataset.id;
-
-    if (action === "increase") updateCartQty(id, 1);
-    if (action === "decrease") updateCartQty(id, -1);
-    if (action === "remove") removeCartItem(id);
-  }
-});
-
-seasonTabs.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const season = btn.dataset.season;
-    activeSeason = season;
-    updateSeasonContent(season);
+  // Season tabs
+  seasonTabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const season = tab.dataset.season;
+      if (season && season !== currentSeason) {
+        renderSeason(season);
+      }
+    });
   });
+
+  // Product add-to-cart (event delegation)
+  if (productsGridEl) {
+    productsGridEl.addEventListener("click", (event) => {
+      const button = event.target.closest(".product-add-btn");
+      if (!button) return;
+      const productId = button.dataset.productId;
+      if (productId) {
+        addToCart(productId);
+      }
+    });
+  }
+
+  // Cart open/close
+  if (cartButtonEl) {
+    cartButtonEl.addEventListener("click", openCart);
+  }
+
+  if (closeCartButtonEl) {
+    closeCartButtonEl.addEventListener("click", closeCart);
+  }
+
+  if (cartOverlayEl) {
+    cartOverlayEl.addEventListener("click", closeCart);
+  }
+
+  // Close on ESC
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeCart();
+    }
+  });
+
+  // Cart quantity & remove (delegation)
+  if (cartItemsEl) {
+    cartItemsEl.addEventListener("click", (event) => {
+      const button = event.target.closest("button[data-action]");
+      if (!button) return;
+      const action = button.dataset.action;
+      const productId = button.dataset.productId;
+
+      if (!productId) return;
+
+      if (action === "increase") {
+        changeCartQuantity(productId, 1);
+      } else if (action === "decrease") {
+        changeCartQuantity(productId, -1);
+      } else if (action === "remove") {
+        removeFromCart(productId);
+      }
+    });
+  }
+
+  // Checkout
+  if (checkoutButtonEl) {
+    checkoutButtonEl.addEventListener("click", handleCheckout);
+  }
+
+  // Initial render
+  renderSeason(currentSeason);
+  updateCartUI();
 });
-
-cartButton.addEventListener("click", openCart);
-closeCartButton.addEventListener("click", closeCart);
-cartOverlay.addEventListener("click", closeCart);
-checkoutButton.addEventListener("click", handleCheckout);
-
-// Footer year
-// Footer year
-if (yearSpan) {
-  yearSpan.textContent = new Date().getFullYear();
-}
-
-// ========= INIT =========
-
-// Only run seasonal hero / product setup on pages that actually have that layout
-const hasSeasonLayout =
-  productsGrid &&
-  seasonHeading &&
-  seasonSubheading &&
-  productSectionTitle &&
-  countdownEl;
-
-if (hasSeasonLayout) {
-  updateSeasonContent(activeSeason);
-}
-
-// Cart sidebar can exist on every page
-renderCart();
